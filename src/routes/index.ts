@@ -7,7 +7,7 @@ const router = Router();
 type RequestBody = {
     id: number,
     name: string,
-    birthDate: Date
+    birthDate: string
 }
 
 router.get('/', (req, res) => {
@@ -19,7 +19,7 @@ router.post('/b', (req, res) => {
     const newCustomer : Customer = {
         id: parseInt(req.body.id),
         name: req.body.name,
-        birthDate: new Date(Date.parse(req.body.birthDate))
+        birthDate: new Date().toLocaleString()
     };
     customers.push(newCustomer);
     res.status(201).json(newCustomer);
